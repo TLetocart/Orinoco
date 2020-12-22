@@ -39,9 +39,7 @@ function addCart(product) {
 /* Vider panier */
 
 window.addEventListener("DOMContentLoaded", (event) => {
-    if (cart.products.length > 0) {
-        nombreProduitPanier();
-    }
+    nombreProduitPanier(); 
 });
 
 

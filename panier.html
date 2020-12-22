@@ -12,8 +12,9 @@
   crossorigin="anonymous"
   >
   <script src="js/app.js"></script>
-
   <script src="js/panier.js"></script>
+  <link rel="stylesheet" href="style-panier.css">
+
   <title>Orinoco</title>
 </head>
 
@@ -53,10 +54,81 @@
             <div class="col-md-5">
               <h5>{title}</h5>
             </div>
+            <div class="col-md-2">
+              <form>
+                <select id="nombreElement" class="form-control">
+                  <option selected>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                  <option>6</option>
+                </select>
+            </form>
+            </div>
+            <div class="col-md-2">
+              <a href="#" class="btn btn-primary clear-article" data-id="{id}" >Supprimer</a>
+            </div>
           </div>
         </div>
       </div>
     </template>
+
+    <!-- Formulaire -->
+
+    <div class="formulaire">
+      <form>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="inputEmail">Email</label>
+            <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="inputPassword">Mot de passe</label>
+            <input type="password" class="form-control" id="inputPassword4" placeholder="*****">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="inputAddress">Addresse</label>
+          <input type="text" class="form-control" id="inputAddress" placeholder="20 rue des Coquelicots">
+        </div>
+        <div class="form-group">
+          <label for="inputAddress2">Complément d'adresse</label>
+          <input type="text" class="form-control" id="inputAddress2" placeholder="Appartement, étage">
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="inputCity">Ville</label>
+            <input type="text" class="form-control" id="inputCity">
+          </div>
+          <div class="form-group col-md-4">
+            <label for="inputState">Pays</label>
+            <select id="inputState" class="form-control">
+              <option selected>Choisir...</option>
+              <option>France</option>
+              <option>Belgique</option>
+              <option>Suisse</option>
+              <option>Espagne</option>
+              <option>Allemagne</option>
+            </select>
+          </div>
+          <div class="form-group col-md-2">
+            <label for="inputZip">Code Postal</label>
+            <input type="text" class="form-control" id="inputZip">
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="gridCheck">
+            <label class="form-check-label" for="gridCheck">
+              Check me out
+            </label>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Envoyer</button>
+      </form>
+    </div>
+
     <div id="panier-contenu">
       <p id="panier_Vide">Votre panier est vide</p>
       <div id="cart-products"></div>
@@ -64,6 +136,7 @@
     </div>
     <a href="#" class="btn btn-primary" id="clear-cart">Vider Panier</a>
   </div>
+
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>

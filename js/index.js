@@ -12,7 +12,6 @@ window.addEventListener("DOMContentLoaded", (event) => {
         console.log(articleTemplate);
 
        data.forEach(element => {
-           console.log(element);
            let div = document.createElement('div');
            div.className = 'col-md-4';
 
