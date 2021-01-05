@@ -10,33 +10,12 @@ if (null === cart) {
 
 function initCart(){
     cart = {
+        totalPrice : 0,
         createdAt: new Date(),
         products: []
     };
 }
 
-
-
-function addCart(product) {
-    console.log(cart.products);
-    let exist = false;
-
-    cart.products.forEach(element => {
-        console.log(element);
-        
-        if (product._id === element._id) {
-            exist = true;
-        }
-    });
-
-    if (false === exist) {
-        cart.products.push(product);
-        localStorage.setItem("cart", JSON.stringify(cart));
-        nombreProduitPanier();
-    }
-}
-
-/* Vider panier */
 
 window.addEventListener("DOMContentLoaded", (event) => {
     nombreProduitPanier(); 
