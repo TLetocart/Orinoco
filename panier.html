@@ -77,44 +77,29 @@
     <!-- Formulaire -->
 
     <div class="formulaire">
-      <form>
+      <form id="myForm">
         <div class="form-row">
           <div class="form-group col-md-6">
-            <label for="inputEmail">Email</label>
-            <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+            <label for="firstName">Prénom</label>
+            <input name="firstName" type="text" class="form-control" id="firstName" placeholder="Prénom" required>
           </div>
           <div class="form-group col-md-6">
-            <label for="inputPassword">Mot de passe</label>
-            <input type="password" class="form-control" id="inputPassword4" placeholder="*****">
+            <label for="name">Nom</label>
+            <input name="name" type="text" class="form-control" id="name" placeholder="Nom" required>
           </div>
         </div>
         <div class="form-group">
-          <label for="inputAddress">Addresse</label>
-          <input type="text" class="form-control" id="inputAddress" placeholder="20 rue des Coquelicots">
+          <label for="inputEmail">Email</label>
+          <input name="email" type="email" class="form-control" id="inputEmail" placeholder="Email" required>
         </div>
         <div class="form-group">
-          <label for="inputAddress2">Complément d'adresse</label>
-          <input type="text" class="form-control" id="inputAddress2" placeholder="Appartement, étage">
+          <label for="inputAddresse">Adresse</label>
+          <input name="adresse" type="text" class="form-control" id="inputAddresse" placeholder="Adresse" required>
         </div>
         <div class="form-row">
           <div class="form-group col-md-6">
             <label for="inputCity">Ville</label>
-            <input type="text" class="form-control" id="inputCity">
-          </div>
-          <div class="form-group col-md-4">
-            <label for="inputState">Pays</label>
-            <select id="inputState" class="form-control">
-              <option selected>Choisir...</option>
-              <option>France</option>
-              <option>Belgique</option>
-              <option>Suisse</option>
-              <option>Espagne</option>
-              <option>Allemagne</option>
-            </select>
-          </div>
-          <div class="form-group col-md-2">
-            <label for="inputZip">Code Postal</label>
-            <input type="text" class="form-control" id="inputZip">
+            <input name="inputCity" type="text" class="form-control" id="inputCity" required>
           </div>
         </div>
         <div class="form-group">

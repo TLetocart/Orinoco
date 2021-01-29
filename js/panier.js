@@ -29,16 +29,19 @@ window.addEventListener("DOMContentLoaded", (event) => {
 
     // Envoie requête serveur
 
-    document.querySelector('#but-envoyer').addEventListener('click', function(event){
+    document.querySelector('#myForm').addEventListener('submit', function(event){
         event.preventDefault();
+        var myForm = document.getElementById('myForm');
+        formData = new FormData(myForm);
+        console.log(formData.get);
         const order = {
             contact: 
             {
-                firstName: 'john',
-                lastName: 'doe',
-                address: "1 rue des capucines",
-                city: "Paris",
-                email: "toto@gmail.com"
+                firstName: formData.get("firstName"),
+                lastName: formData.get("name"),
+                address: formData.get("adresse"),
+                city: formData.get("inputCity"),
+                email: formData.get("email")
             },
             products : []
         }
@@ -54,9 +57,9 @@ window.addEventListener("DOMContentLoaded", (event) => {
         }).then(response => {
             return response.json();
         }).then(data => {
-            // le numéro de la commande
+            localStorage.clear();
+            window.location.href = "confirmation.html?id=" + data.orderId + "&total=" + cart.totalPrice;
             console.log(data);
-            //redirige vers la commande commande.html?id="NUMERO DE LA COMMANDE"
             
         });
     })
@@ -124,3 +127,7 @@ function updateCart(cart){
     nombreProduitPanier();
     localStorage.setItem("cart", JSON.stringify(cart));
 }
+
+
+
+

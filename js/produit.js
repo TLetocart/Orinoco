@@ -28,10 +28,18 @@ window.addEventListener("DOMContentLoaded", (event) => {
         }
     })
     .then(function(data) {
-        console.log(data.name);
+        console.table(data);
 
         document.querySelector('h1').innerText = data.name;
         document.querySelector('.description').innerText = data.description;
+        
+        const colorsElements = document.querySelector("#product-color");
+
+        data.colors.forEach(color=>{
+            let option = document.createElement("option");
+            option.innerText = color;
+            colorsElements.appendChild(option);
+        })
     
         document.querySelector('#add-cart').addEventListener('click', function() {
            alert('Ajout dans le panier');
