@@ -14,6 +14,7 @@ function initCart(){
         createdAt: new Date(),
         products: []
     };
+    localStorage.setItem("cart", JSON.stringify(cart));
 }
 
 

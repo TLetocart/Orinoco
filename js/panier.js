@@ -57,10 +57,11 @@ window.addEventListener("DOMContentLoaded", (event) => {
         }).then(response => {
             return response.json();
         }).then(data => {
-            localStorage.clear();
+            localStorage.setItem("commande", JSON.stringify({id: data.orderId, total: cart.totalPrice}));
             window.location.href = "confirmation.html?id=" + data.orderId + "&total=" + cart.totalPrice;
             console.log(data);
-            
+            initCart();
+            nombreProduitPanier();
         });
     })
 
