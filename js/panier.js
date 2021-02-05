@@ -27,42 +27,89 @@ window.addEventListener("DOMContentLoaded", (event) => {
 
     renderProducts(cart.products);
 
+
+
     // Envoie requête serveur
 
     document.querySelector('#myForm').addEventListener('submit', function(event){
-        event.preventDefault();
-        var myForm = document.getElementById('myForm');
-        formData = new FormData(myForm);
-        console.log(formData.get);
-        const order = {
-            contact: 
-            {
-                firstName: formData.get("firstName"),
-                lastName: formData.get("name"),
-                address: formData.get("adresse"),
-                city: formData.get("inputCity"),
-                email: formData.get("email")
-            },
-            products : []
+
+        var form_inscription = document.getElementById("myForm");
+        var nom = document.getElementById("name");
+        var prenom = document.getElementById("firstName");
+        var email = form_inscription.elements["inputEmail"];
+        var adresse = form_inscription.elements["adresse"];
+        var ville = form_inscription.elements["inputCity"];
+        var form_OK = true;
+        var regex = /\w/ ;
+        var email_Regex = /^[a-z0-9]+([_|\.|-]{1}[a-z0-9]+)*@[a-z0-9]+([_|\.|-]­{1}[a-z0-9]+)*[\.]{1}[a-z]{2,6}$/ ;
+
+
+        if(regex.exec(nom.value) == null){
+            form_OK = false;
+            alert('Nom Incorrect');
+            event.preventDefault();
         }
-        
-        cart.products.forEach(element => {
-            order.products.push(element.product._id)
-        });
-        
-        fetch('http://localhost:3000/api/teddies/order', {
-            method: "post", 
-            headers: {"Content-Type":"application/json"},
-            body: JSON.stringify(order)
-        }).then(response => {
-            return response.json();
-        }).then(data => {
-            localStorage.setItem("commande", JSON.stringify({id: data.orderId, total: cart.totalPrice}));
-            window.location.href = "confirmation.html?id=" + data.orderId + "&total=" + cart.totalPrice;
-            console.log(data);
-            initCart();
-            nombreProduitPanier();
-        });
+
+        if(regex.exec(prenom.value) == null){
+            form_OK = false;
+            alert('Prénom Incorrect');
+            event.preventDefault();
+        }
+
+        if(regex.exec(adresse.value) == null){
+            form_OK = false;
+            alert('Adresse Incorrecte');
+            event.preventDefault();
+        }
+
+        if(email_Regex.exec(email.value) == null){
+            form_OK = false;
+            alert('email Incorrect');
+            event.preventDefault();
+        }
+
+        if(regex.exec(ville.value) == null){
+            form_OK = false;
+            alert('Ville Incorrecte');
+            event.preventDefault();
+        }
+
+        if(form_OK){
+
+            event.preventDefault();
+            var myForm = document.getElementById('myForm');
+            formData = new FormData(myForm);
+            console.log(formData.get);
+            const order = {
+                contact: 
+                {
+                    firstName: formData.get("firstName"),
+                    lastName: formData.get("name"),
+                    address: formData.get("adresse"),
+                    city: formData.get("inputCity"),
+                    email: formData.get("email")
+                },
+                products : []
+            }
+            
+            cart.products.forEach(element => {
+                order.products.push(element.product._id)
+            });
+            
+            fetch('http://localhost:3000/api/teddies/order', {
+                method: "post", 
+                headers: {"Content-Type":"application/json"},
+                body: JSON.stringify(order)
+            }).then(response => {
+                return response.json();
+            }).then(data => {
+                localStorage.setItem("commande", JSON.stringify({id: data.orderId, total: cart.totalPrice}));
+                window.location.href = "confirmation.html?id=" + data.orderId + "&total=" + cart.totalPrice;
+                console.log(data);
+                initCart();
+                nombreProduitPanier();
+            });
+        }
     })
 
 });
@@ -128,7 +175,3 @@ function updateCart(cart){
     nombreProduitPanier();
     localStorage.setItem("cart", JSON.stringify(cart));
 }
-
-
-
-
