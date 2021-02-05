@@ -40,7 +40,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
         var adresse = form_inscription.elements["adresse"];
         var ville = form_inscription.elements["inputCity"];
         var form_OK = true;
-        var regex = /\w/ ;
+        var regex = /^[a-zA-Z ]+$/ ;
         var email_Regex = /^[a-z0-9]+([_|\.|-]{1}[a-z0-9]+)*@[a-z0-9]+([_|\.|-]­{1}[a-z0-9]+)*[\.]{1}[a-z]{2,6}$/ ;
 
 
